@@ -15,17 +15,14 @@ mb_language("japanese");
 mb_internal_encoding("UTF-8");
 
 //共通設定：送信先
-// $sendto = "nagahama9284109@gmail.com";
-$sendto = "hideya@tonmana.co.jp";
+$sendto = "xxxx@xxxx.co.jp";
 
 //送信先
 $to = $sendto;
 
 //差出人設定
-// $frommail = "nagahama9284109@gmail.com";
-// $fromname = "長濱英也";
-$frommail = "hideya@tonmana.co.jp";
-$fromname = "【株式会社TONMANA】長濱英也";
+$frommail = "xxxx@xxxx.co.jp";
+$fromname = "【株式会社xxxx】xxxx";
 $header = "From: ". mb_encode_mimeheader (mb_convert_encoding($fromname,"ISO-2022-JP","AUTO")) . "<" . $frommail. ">";
 
 //メールが送信できなっかた場合の戻り先
@@ -55,12 +52,12 @@ $message .= "▼ご用件："."\n".$_consultation."\n\n";
 $message .= "▼お問合わせ内容："."\n".$_inquiry."\n\n";
 
 //自動返信用メール本文
-$title = "【株式会社TONMANA】お問い合わせ内容のご確認";
+$title = "【株式会社xxxx】お問い合わせ内容のご確認";
 
 $naiyou = "
 $_name  様
 
-株式会社TONMANAへのお問い合わせいただき、
+株式会社xxxxへのお問い合わせいただき、
 誠にありがとうございます。
 
 ２営業日以内に弊社担当者より折り返しご連絡させていただきます。

@@ -53,9 +53,11 @@ gulp.task('sass',function() {
 	console.log('test');
 	gulp.src('app/src/assets/sass/*.scss')
 		.pipe(plumber())　// エラー対策
-		.pipe(sass())　// sassのコンパイル
+		.pipe(sass({
+            outputStyle: 'expanded'
+        }))　// sassのコンパイル
 		.pipe(pleeease({
-			autoprefixer: ['last 2 versions'],
+			autoprefixer: {"browsers": ["last 4 versions", "Android 2.3"]},
 			minifier: false
 		}))
 		.pipe(gulp.dest('app/product/assets/css'));

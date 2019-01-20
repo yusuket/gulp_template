@@ -1,104 +1,140 @@
-/*
-html5doctor.com Reset Stylesheet
-v1.6.1
-Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com
-Twitter: @rich_clark
-一部改定
-*/
+/* ***********************************
+ *
+ *    Ire's CSS Reset & Base
+ *    https://github.com/ireade/css/blob/master/base.scss
+ * *********************************** */
 
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
+/* Reset margin, padding, border
+ * *********************************** */
+
+html, body,
+h1, h2, h3, h4, h5, h6,
+a, p, span,
+em, small, strong,
+sub, sup,
+mark, del, ins, strike,
+abbr, dfn,
+blockquote, q, cite,
+code, pre,
+ol, ul, li, dl, dt, dd,
+div, section, article,
+main, aside, nav,
+header, hgroup, footer,
+img, figure, figcaption,
+address, time,
+audio, video,
+canvas, iframe,
+details, summary,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;
-  background: transparent;
+table, caption,
+tbody, tfoot, thead,
+tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-* {
-  box-sizing: border-box;
+/* Typography
+ * *********************************** */
+
+html {
+    font-size: 62.5%;
 }
 
 body {
-  color: #333333;
-  font-size: 14px;
-  line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', '游ゴシック Medium', meiryo, sans-serif;
-}
-/* IE10以下 */
-@media all and (-ms-high-contrast: none){
-  body {
-    font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
-  }
+    font-size: 1.6rem;
+    line-height: 1.4;
 }
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, time, main {
-  display: block;
+* {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 
-nav, ul, li {
-  list-style: none
+a,
+a:visited {
+    color: inherit;
 }
 
-blockquote, q {
-  quotes: none;
+/* Layout
+ * *********************************** */
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+main {
+    display: block;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
+* {
+    box-sizing: border-box;
 }
 
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  text-decoration: none;
-  color: #333;
+*:before,
+*:after {
+    box-sizing: inherit;
 }
+
+/* Elements
+ * *********************************** */
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-input, select {
-  vertical-align: middle;
+ol,
+ul {
+    list-style: none;
 }
-input[type="submit"],
-input[type="button"] {
-  border-radius: 0;
-  -webkit-box-sizing: content-box;
-  -webkit-appearance: button;
-  appearance: button;
-  border: none;
-  box-sizing: border-box;
-  cursor: pointer;
+
+img,
+video {
+    max-width: 100%;
 }
-button{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
+
+img {
+    border-style: none;
 }
-address {
-  font-style: normal;
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: "";
+    content: none;
+}
+
+/* Attributes & states
+ * *********************************** */
+
+[hidden] {
+    display: none !important;
+}
+
+[disabled] {
+    cursor: not-allowed;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Utility classes
+ * *********************************** */
+
+.sr-only {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    left: -9999px;
+    top: -9999px;
 }

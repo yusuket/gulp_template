@@ -10,27 +10,18 @@ var rename = require('gulp-rename');
 
 
 /* 
-デフォルトタスク
-*/
-gulp.task('default', function() {
-	gulp.run('browser-sync','watch');
-	
-});
-
-
-/* 
 watch
 */
-gulp.task('watch', function () {
-    gulp.watch('app/src/assets/sass/*.scss',["sass"]);
+gulp.task('watch', function (done) {
+	gulp.watch('app/src/assets/sass/*.scss',gulp.parallel('sass'));
+	done();	// タスク内の処理が完了したタイミングでcallbackを呼ぶ
 });
-
 
 
 /* 
 ブラウザシンク
 */
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function (done) {
 	browserSync({
 		notify: false,
 		server: {
@@ -38,11 +29,12 @@ gulp.task('browser-sync', function () {
 		}
 	});
 	// HTMLを監視
-	gulp.watch('app/product/**/*.html', reload);
+	gulp.watch('app/product/**/*.html', gulp.parallel(reload));
 	// CSSを監視
-	gulp.watch('app/product/assets/css/*.css', reload);
+	gulp.watch('app/product/assets/css/*.css', gulp.parallel(reload));
 	// jsを監視
-	gulp.watch('app/product/assets/js/*.js', reload);
+	gulp.watch('app/product/assets/js/*.js', gulp.parallel(reload));
+	done();	// タスク内の処理が完了したタイミングでcallbackを呼ぶ
 });
 
 
@@ -51,7 +43,7 @@ sassのコンパイル
 */
 gulp.task('sass',function() {
 	console.log('test');
-	gulp.src('app/src/assets/sass/*.scss')
+	return gulp.src('app/src/assets/sass/*.scss')
 		.pipe(plumber())　// エラー対策
 		.pipe(sass({
             outputStyle: 'expanded'
@@ -62,3 +54,9 @@ gulp.task('sass',function() {
 		}))
 		.pipe(gulp.dest('app/product/assets/css'));
 });
+
+
+/* 
+デフォルトタスク
+*/
+gulp.task('default', gulp.parallel('browser-sync','watch'));

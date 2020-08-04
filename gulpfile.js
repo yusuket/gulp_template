@@ -12,16 +12,15 @@ var rename = require('gulp-rename');
 /* 
 watch
 */
-gulp.task('watch', function (done) {
-	gulp.watch('app/src/assets/sass/*.scss',gulp.parallel('sass'));
-	done();	// タスク内の処理が完了したタイミングでcallbackを呼ぶ
+gulp.task('watch', function () {
+	gulp.watch('app/src/assets/sass/*.scss',gulp.task('sass'));
 });
 
 
 /* 
 ブラウザシンク
 */
-gulp.task('browser-sync', function (done) {
+gulp.task('browser-sync', function () {
 	browserSync({
 		notify: false,
 		server: {
@@ -29,12 +28,11 @@ gulp.task('browser-sync', function (done) {
 		}
 	});
 	// HTMLを監視
-	gulp.watch('app/product/**/*.html', gulp.parallel(reload));
+	gulp.watch('app/product/**/*.html').on('change', reload);
 	// CSSを監視
-	gulp.watch('app/product/assets/css/*.css', gulp.parallel(reload));
+	gulp.watch('app/product/assets/css/*.css').on('change', reload);
 	// jsを監視
-	gulp.watch('app/product/assets/js/*.js', gulp.parallel(reload));
-	done();	// タスク内の処理が完了したタイミングでcallbackを呼ぶ
+	gulp.watch('app/product/assets/js/*.js').on('change', reload);
 });
 
 
@@ -59,4 +57,4 @@ gulp.task('sass',function() {
 /* 
 デフォルトタスク
 */
-gulp.task('default', gulp.parallel('browser-sync','watch'));
+gulp.task('default',gulp.parallel('browser-sync','watch'));
